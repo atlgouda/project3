@@ -10,7 +10,13 @@ mongoose.connect(
   process.env.MONGODB_URI,
   { useNewUrlParser: true }
 )
-
+const connection = mongoose.connection
+connection.on('connected', () => {
+  console.log('Mongoose Connected Successfully')
+})
+connection.on('error', err => {
+console.log(`Mongoose default connection error: ${err}`)
+})
 
 var app = express();
 
@@ -19,7 +25,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(`${__dirname}/client/build/`))
 
 
 
-module.exports = app;
+module.exports = apps
