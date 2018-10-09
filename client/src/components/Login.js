@@ -17,7 +17,7 @@ export default class LogIn extends Component {
         //get users out of state and map through it
         const usersList = this.state.users.map((user, i) => {
             return (
-            <div>
+            <div key={i}>
                 <br></br>
             <Link to={`/users/${user._id}`}
             key={i}
@@ -34,7 +34,7 @@ export default class LogIn extends Component {
         <h1>Log In</h1>
         <h3>Please select a User</h3>
         {usersList}
-       
+        
       </div>
     )
   }
