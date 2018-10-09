@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema
 
 const UserSchema = new Schema({
-    userName: String,
+    name: String,
     imageUrl: String,
     neighborhood: String,
     restaurants: [],
