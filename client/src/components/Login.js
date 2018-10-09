@@ -8,19 +8,33 @@ export default class LogIn extends Component {
         users: [],
     }
 
-    getAllUsers = () => {
-        axios.get('localhost:3001/api/users').then(res => {
-            this.setState({users: res.data})
-        })
+    componentDidMount = async () => {
+        const response = await axios.get('/api/users')
+        this.setState({ users: response.data})
     }
+
   render() {
+        //get users out of state and map through it
+        const usersList = this.state.users.map((user, i) => {
+            return (
+            <div>
+                <br></br>
+            <Link to={`/users/${user._id}`}
+            key={i}
+            >Name: {user.name}
+            </Link>
+            <br></br>
+           
+            Stomping Grounds: {user.neighborhood}
+            </div>
+            )
+        })
     return (
       <div>
         <h1>Log In</h1>
         <h3>Please select a User</h3>
-        {this.state.users.map(user => {
-          return (<Link to={`/user/${user._id}`}>{user.name}</Link>)
-        })}
+        {usersList}
+       
       </div>
     )
   }
