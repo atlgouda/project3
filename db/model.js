@@ -5,4 +5,5 @@ const UserModel = mongoose.model('User', UserSchema)
 const RestaurantModel = mongoose.model('Restaurant', RestaurantSchema)
 module.exports = {
     User: UserModel,
+    Restaurant: RestaurantModel,
 }
