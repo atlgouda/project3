@@ -27,6 +27,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(`${__dirname}/client/build/`))
 
+const usersController = require('./routes/usersController')
+//CA go to postman and check that it is working
+app.use('/api/users', usersController)
 
-
-module.exports = apps
+module.exports = app
