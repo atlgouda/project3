@@ -31,4 +31,7 @@ const usersController = require('./routes/usersController')
 //CA go to postman and check that it is working
 app.use('/api/users', usersController)
 
+const restaurantsController = require('./routes/restaurantsController')
+app.use('/api/users/:userId/restaurants', restaurantsController)
+
 module.exports = app
