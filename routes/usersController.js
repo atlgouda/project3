@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
 })
 
 //Create 
-routerlpost('/', async (req, res) => {
+router.post('/', async (req, res) => {
     const user = await User.create(req.body)
     res.send(user)
 })
