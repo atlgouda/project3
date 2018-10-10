@@ -1,8 +1,33 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import styled from 'styled-components'
 
+const StyledLogInHeader = styled.div`
+    background-color: silver;
+    display: flex;
+    justify-content: center;
+`
+const ImageContainer = styled.div`
+    padding: 3px;
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 30%;
+    }
+    `
+const StyledUserInfo = styled.div`
+        
+        text-align: center; 
+        a {
+            text-decoration: none;
+            color: slategray;
+        }
 
+    
+    
+`
 export default class LogIn extends Component {
     state = {
         users: [],
@@ -42,31 +67,43 @@ handleSubmit = async (event) => {
         //get users out of state and map through it
         const usersList = this.state.users.map((user, i) => {
             return (
-            <div key={i}>
+            <StyledUserInfo key={i}>
                 <br></br>
             
             <Link to={`/users/${user._id}`}
             key={i}
-            >Name: {user.name}
+            >
+           <ImageContainer>
+            <img src={user.imageUrl} />
+            </ImageContainer>
+            <br></br>
+            {user.name} from {user.neighborhood}
             </Link>
             <br></br>
-           
-            Stomping Grounds: {user.neighborhood}
-            </div>
+         
+            </StyledUserInfo>
             )
         })
     return (
       <div>
         
-        <h1>Log In</h1>
-        <h3>Please select a User</h3>
+        <StyledLogInHeader><h1>Users</h1></StyledLogInHeader>
+        <h2>Please select a User</h2>
         {usersList}
-            
+        <br></br>
+        <h2>Or Create Your Own!</h2>
+        <br></br>
         <form onSubmit={this.handleSubmit}>
-        <input type="text"
+        Name: <input type="text"
         name="name"
         value={this.state.newUser.name}
         onChange={this.handleChange} />
+        Neighborhood: <input type='text'
+        name="neighborhood"
+        value={this.state.newUser.neighborhood}
+        onChange={this.handleChange} />
+        <br></br>
+        
         <input type='submit' value="Create New User" />
         
         </form>
