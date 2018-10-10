@@ -54,8 +54,8 @@ const gouda = new User({
 })
 
 const daniel = new User({
-    name: "Daniel",
-    imageUrl: "TBD",
+    name: "Ronnie",
+    imageUrl: "https://i.imgur.com/7tR2kji.jpg?1",
     neighborhood: "Midtown",
     restaurants: [goldenEagle, no246],
 })

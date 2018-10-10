@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import styled from 'styled-components'
+import 'typeface-roboto';
 
 const StyledLogInHeader = styled.div`
     background-color: silver;
@@ -14,12 +15,13 @@ const ImageContainer = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 30%;
+        max-width: 30%;
     }
     `
 const StyledUserInfo = styled.div`
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
         
-        text-align: center; 
         a {
             text-decoration: none;
             color: slategray;
@@ -68,7 +70,7 @@ handleSubmit = async (event) => {
         const usersList = this.state.users.map((user, i) => {
             return (
             <StyledUserInfo key={i}>
-                <br></br>
+              
             
             <Link to={`/users/${user._id}`}
             key={i}
@@ -79,7 +81,7 @@ handleSubmit = async (event) => {
             <br></br>
             {user.name} from {user.neighborhood}
             </Link>
-            <br></br>
+            <br></br><br></br>
          
             </StyledUserInfo>
             )
@@ -97,10 +99,14 @@ handleSubmit = async (event) => {
         Name: <input type="text"
         name="name"
         value={this.state.newUser.name}
-        onChange={this.handleChange} />
+        onChange={this.handleChange} /><br></br>
         Neighborhood: <input type='text'
         name="neighborhood"
         value={this.state.newUser.neighborhood}
+        onChange={this.handleChange} /><br></br>
+        Image URL: <input type="text"
+        name='imageUrl'
+        value={this.state.newUser.imageUrl}
         onChange={this.handleChange} />
         <br></br>
         
