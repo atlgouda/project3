@@ -13,4 +13,19 @@ router.get('/:id', async (req, res) => {
     res.send(user)
 })
 
+//Create 
+routerlpost('/', async (req, res) => {
+    const user = await User.create(req.body)
+    res.send(user)
+})
+
+//Update
+
+//Delete
+router.delete('/:id', async (req, res) => {
+    await User.findByIdAndRemove(req.params.id)
+    res.sendStatus(200)
+})
+
+
 module.exports = router
