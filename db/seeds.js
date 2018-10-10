@@ -14,18 +14,50 @@ const goldenEagle = new Restaurant({
     neighborhood: "Reynoldstown"
 })
 
+const bartaco = new Restaurant ({
+    name: "bartaco",
+    cuisine: "Mexican",
+    linkAddress: "https://bartaco.com/location/atlanta-inman/",
+    imageUrl: "https://i.imgur.com/fSgZUKO.jpg",
+    neighborhood: "Inman Park"
+})
+
+const dishDive = new Restaurant ({
+    name: "Dish Dive",
+    cuisine: "American",
+    linkAddress: "http://www.dishdivekitchen.com/",
+    imageUrl: "https://i.imgur.com/WRf2clI.jpg",
+    neighborhood: "Decatur"
+})
+
+const firePit = new Restaurant ({
+    name: 'Fire Pit Tavern',
+    cuisine: "Pizza",
+    linkAddress: "http://www.firepitatl.com/",
+    imageUrl: "https://i.imgur.com/Dsi0snU.jpg",
+    neighborhood: "Grant Park"
+})
+
+const no246 = new Restaurant ({
+    name: "Number 246",
+    cuisine: "Italian",
+    linkAddress: "http://www.no246.com/",
+    imageUrl: "https://i.imgur.com/VbBnJtU.jpg",
+    neighborhood: "Decatur"
+})
+
 const gouda = new User({
     name: "Gouda",
     imageUrl: "https://i.imgur.com/DtuG0zk.jpg",
     neighborhood: "Grant Park",
-    restaurants: [],
+    restaurants: [firePit, bartaco, dishDive],
 })
 
 const daniel = new User({
     name: "Daniel",
     imageUrl: "TBD",
     neighborhood: "Midtown",
-    restaurants: [goldenEagle],
+    restaurants: [goldenEagle, no246],
 })
 
 
