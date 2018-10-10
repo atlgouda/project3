@@ -12,6 +12,7 @@ export default class LogIn extends Component {
     componentDidMount = async () => {
         const response = await axios.get('/api/users')
         this.setState({ users: response.data})
+        console.log(response.data)
     }
 
 handleChange = (event) => {
@@ -34,12 +35,16 @@ handleSubmit = async (event) => {
     this.setState({ users })
   }
 
+
+  
+
   render() {
         //get users out of state and map through it
         const usersList = this.state.users.map((user, i) => {
             return (
             <div key={i}>
                 <br></br>
+            
             <Link to={`/users/${user._id}`}
             key={i}
             >Name: {user.name}
