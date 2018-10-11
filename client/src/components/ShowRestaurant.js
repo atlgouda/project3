@@ -1,7 +1,19 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-export default class ShowRestaurant extends Component {
+import styled from 'styled-components'
 
+const ImageContainer = styled.div`
+    padding: 3px;
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 60%;
+    }
+`
+
+export default class ShowRestaurant extends Component {
+    
     state = {
         restaurant: {},
         
@@ -28,14 +40,21 @@ export default class ShowRestaurant extends Component {
         // this.state
         const restaurantInfo = (
         <div>
-        Name: {this.state.restaurant.name}
+        <ImageContainer>
+            <img src={this.state.restaurant.imageUrl} />
+        </ImageContainer>
+        Serving {this.state.restaurant.cuisine} to the 
+        good people of {this.state.restaurant.neighborhood}<br></br>
+        <a href={this.state.restaurant.linkAddress}>Restaurant Website</a><br></br>
+       
        
               </div>
         )
     return (
       <div>
+          <h1>{this.state.restaurant.name}</h1>
           {restaurantInfo}
-        Show one restaurant
+        
        
               </div>
     )
