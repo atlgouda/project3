@@ -41,7 +41,7 @@ export default class ShowRestaurant extends Component {
         const restaurantInfo = (
         <div>
         <ImageContainer>
-            <img src={this.state.restaurant.imageUrl} />
+            <img src={this.state.restaurant.imageUrl} alt="restaurant" />
         </ImageContainer>
         Serving {this.state.restaurant.cuisine} to the 
         good people of {this.state.restaurant.neighborhood}<br></br>

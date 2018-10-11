@@ -29,5 +29,20 @@ router.post('/', (req, res) => {
             res.send(user)
         })
 })
+//Update Route
+// router.put('/:id', (req, res) => {
+//     Restaurant.findById(req.params.restaurantId)
+//     .then(restaurant => {
+//         const restaurant = user.restaurants.id(req.params.id)
+//         const updatedRestaurant = req.body
+//         if (updatedRestaurant.name) {
+//             restaurant.name = updatedRestaurant.name
+//         }
+//         return restaurant.save()
+//     })
+//     .then(restaurant => {
+//         res.send(restaurant)
+//     })
+// })
 
 module.exports = router

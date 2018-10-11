@@ -76,7 +76,7 @@ handleSubmit = async (event) => {
             key={i}
             >
            <ImageContainer>
-            <img src={user.imageUrl} />
+            <img src={user.imageUrl} alt="user" />
             </ImageContainer>
             <br></br>
             {user.name} from {user.neighborhood}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+
 import EditUser from './EditUser'
 
 export default class RestaurantList extends Component {
@@ -34,10 +34,26 @@ export default class RestaurantList extends Component {
     componentDidMount = () => {
         this.getUser()
     }
-
+    
+    handleChange = (event) => {
+        //take it
+        const newRestaurant = { ...this.state.newRestaurant}
+        //change it
+        newRestaurant[event.target.name] = event.target.value
+        //put it back
+       this.setState({ newRestaurant })
+    }
+    //push into API
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const response = await axios.post('api/users/:userId/restaurants', this.state.newRestaurant)
+        const restaurants = [...this.state.restaurants]
+        restaurants.push(response.data)
+        this.setState({ restaurants })
+    }
 
   render() {
-    const userId = this.props.match.params.userId  
+    // const userId = this.props.match.params.userId  
       const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
       const userId = this.props.match.params.userId  
     //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
@@ -66,10 +82,29 @@ export default class RestaurantList extends Component {
         <h3>New Restaurants</h3>
         {listOfRestaurants}
         {this.state.toggleEditUserView ?
-        <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null
-        
+        <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null 
     }
-      </div>
+        <div>Add New Restaurant<br></br>
+       
+        {/* <form onSubmit={this.handleSubmit}>
+        Name: <input type="text"
+        name="name"
+        value={this.state.newRestaurant.name}
+        onChange={this.handleChange} /><br></br>
+        Neighborhood: <input type='text'
+        name="neighborhood"
+        value={this.state.newRestaurant.neighborhood}
+        onChange={this.handleChange} /><br></br>
+        Image URL: <input type="text"
+        name='imageUrl'
+        value={this.state.newRestaurant.imageUrl}
+        onChange={this.handleChange} />
+        <br></br>
+        <input type='submit' value="Create New Restaurant" />
+        </form> */}
+        </div>
+        </div>
+     
     )
     }
 }
