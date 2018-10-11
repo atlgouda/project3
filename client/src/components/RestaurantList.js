@@ -35,6 +35,12 @@ export default class RestaurantList extends Component {
     componentDidMount = () => {
         this.getUser()
     }
+    handleDelete = async(event) => {
+        const userId = this.props.match.params.userId
+        axios.delete(`/api/users/${userId}`)
+        await this.getUser()
+    }
+
     handleChange = (event) => {
         //take it
         const newRestaurant = { ...this.state.newRestaurant}
@@ -60,6 +66,7 @@ export default class RestaurantList extends Component {
     // const userId = this.props.match.params.userId  
       const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
       const userId = this.props.match.params.userId  
+      console.log(userId)
     //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
         return (
             <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
@@ -76,12 +83,21 @@ export default class RestaurantList extends Component {
             </Link>
             )
         })
+        
+        
     return (
         
       <div>
-        <h1>Restaurants for {this.state.user.name}</h1>
+        <h1>{this.state.user.name}'s Page</h1>
         {/* {console.log(this.state.user)} */}
+        Neighborhood:{this.state.user.neighborhood}<br></br>
+        Image Url: {this.state.user.imageUrl}<br></br>
+{/* Delete User */}
+        <Link to='/login'>
+        <button onClick={() => this.handleDelete()} type="submit" value='Delete User'>Delete</button>
+        </Link>
 
+{/* // Toggle */}
         <button onClick={this.buttonToggleUserEditView}>Edit User</button>
         <h3>New Restaurants</h3>
         {listOfRestaurants}
