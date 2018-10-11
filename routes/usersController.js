@@ -20,7 +20,13 @@ router.post('/', async (req, res) => {
 })
 
 //Update
-
+router.put('/:id', async (req, res) => {
+    await console.log(req.body)
+    
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    console.log(req.params.id)
+    res.send(user)
+})
 //Delete
 router.delete('/:id', async (req, res) => {
     await User.findByIdAndRemove(req.params.id)

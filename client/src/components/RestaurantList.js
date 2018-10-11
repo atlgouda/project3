@@ -2,21 +2,33 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-
+import EditUser from './EditUser'
 
 export default class RestaurantList extends Component {
     state = {
         user: {},
         restaurants: [],
+        toggleEditUserView: false
+    }
+
+    buttonToggleUserEditView = () => {
+          this.setState({
+            toggleEditUserView: !this.state.toggleEditUserView
+        })
     }
 
     getUser = async () => {
-        const userId = this.props.match.params.userId
-        const response = await axios.get(`/api/users/${userId}`)
-        this.setState({
-            user: response.data,
-            restaurants: response.data.restaurants
-        })
+        try {
+            const userId = this.props.match.params.userId
+            const response = await axios.get(`/api/users/${userId}`)
+            this.setState({
+                user: response.data,
+                restaurants: response.data.restaurants
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     componentDidMount = () => {
@@ -43,13 +55,15 @@ export default class RestaurantList extends Component {
         
       <div>
         <h1>Restaurants for {this.state.user.name}</h1>
-        
-       <Link to={`/users/${userId}/edit`}>
-        <button>Edit User</button>
-        </Link>
+        {console.log(this.state.user)}
+
+        <button onClick={this.buttonToggleUserEditView}>Edit User</button>
         <h3>New Restaurants</h3>
         {listOfRestaurants}
+        {this.state.toggleEditUserView ?
+        <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null
         
+    }
       </div>
     )
     }
