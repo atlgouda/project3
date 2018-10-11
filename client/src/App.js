@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Home from './components/Home'
 import LogIn from './components/LogIn'
 import RestaurantList from './components/RestaurantList';
-
+import ShowRestaurant from './components/ShowRestaurant'
 
 class App extends Component {
   render() {
@@ -16,6 +16,7 @@ class App extends Component {
           <Route exact path='/' component={Home}/>
           <Route exact path='/login' component={LogIn}/>
           <Route exact path='/users/:userId' component={RestaurantList}/>
+          <Route exact path='/users/:userId/restaurants/:restaurantId' component={ShowRestaurant}/>
         </Switch>
         </div>
       </Router>

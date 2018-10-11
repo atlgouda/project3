@@ -4,13 +4,14 @@ import styled from 'styled-components'
 
 const StyledComeIn = styled.div`
     font-size: 5vh;
-    margin-top: 55%;
+    margin-top: 400px;
+    max-width: 350px;
     background-color: black;
     opacity: 0.6;
     border-radius: 40px;
     font-weight: bolder;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: auto;
+    margin-right: auto;
     
     
 `
@@ -27,11 +28,12 @@ const StyledWelcome = styled.div`
 `
 
 const LandingPage = styled.div`
-  background-image: url(https://i.imgur.com/n2IgZRG.jpg?1);
+  background-image: url(https://i.imgur.com/iyJBUY0.jpg?1);
+  
   height: 100vh; 
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  /* background-size: cover; */
   position: relative;
   max-width: 414;
   color: white;

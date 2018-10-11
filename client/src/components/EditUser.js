@@ -32,6 +32,7 @@ updateUser = async (e) => {
     const userId = this.props.currentUser
     const updatedUser = this.state.user
     console.log(updatedUser)
+    //Axios call not working 
     await axios.put(`/api/users/${userId})`, updatedUser)
     await function(res){
         this.setState({ user: res.data })

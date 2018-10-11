@@ -40,7 +40,11 @@ export default class RestaurantList extends Component {
     const userId = this.props.match.params.userId  
       const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
       const userId = this.props.match.params.userId  
+    //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
         return (
+            <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
+            key={i}
+            >
             <div key={i}>
                 <br></br>
             Name: {restaurant.name}
@@ -49,6 +53,7 @@ export default class RestaurantList extends Component {
            
             In: {restaurant.neighborhood}
             </div>
+            </Link>
             )
         })
     return (
