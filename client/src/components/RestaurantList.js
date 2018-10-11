@@ -8,6 +8,7 @@ export default class RestaurantList extends Component {
     state = {
         user: {},
         restaurants: [],
+        newRestaurant: {},
         toggleEditUserView: false
     }
 
@@ -34,7 +35,6 @@ export default class RestaurantList extends Component {
     componentDidMount = () => {
         this.getUser()
     }
-    
     handleChange = (event) => {
         //take it
         const newRestaurant = { ...this.state.newRestaurant}
@@ -46,9 +46,13 @@ export default class RestaurantList extends Component {
     //push into API
     handleSubmit = async (event) => {
         event.preventDefault()
-        const response = await axios.post('api/users/:userId/restaurants', this.state.newRestaurant)
+        console.log('sup dude')
+        const userId = this.props.match.params.userId
+        const response = await axios.post(`/api/users/${userId}/restaurants`, this.state.newRestaurant)
+        console.log(response.data)
         const restaurants = [...this.state.restaurants]
-        restaurants.push(response.data)
+        console.log(restaurants)
+        restaurants.push(this.state.newRestaurant)
         this.setState({ restaurants })
     }
 
@@ -76,17 +80,16 @@ export default class RestaurantList extends Component {
         
       <div>
         <h1>Restaurants for {this.state.user.name}</h1>
-        {console.log(this.state.user)}
+        {/* {console.log(this.state.user)} */}
 
         <button onClick={this.buttonToggleUserEditView}>Edit User</button>
         <h3>New Restaurants</h3>
         {listOfRestaurants}
         {this.state.toggleEditUserView ?
         <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null 
-    }
+    }<br></br>
         <div>Add New Restaurant<br></br>
-       
-        {/* <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit}>
         Name: <input type="text"
         name="name"
         value={this.state.newRestaurant.name}
@@ -101,7 +104,8 @@ export default class RestaurantList extends Component {
         onChange={this.handleChange} />
         <br></br>
         <input type='submit' value="Create New Restaurant" />
-        </form> */}
+        </form>
+        
         </div>
         </div>
      

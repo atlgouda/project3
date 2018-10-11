@@ -17,6 +17,7 @@ export default class ShowRestaurant extends Component {
     state = {
         restaurant: {},
         
+        
     }
     getRestaurant = async () => {
         const userId = this.props.match.params.userId
@@ -55,7 +56,7 @@ export default class ShowRestaurant extends Component {
           <h1>{this.state.restaurant.name}</h1>
           {restaurantInfo}
         
-       
+          
               </div>
     )
   }

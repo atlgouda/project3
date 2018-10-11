@@ -30,19 +30,17 @@ router.post('/', (req, res) => {
         })
 })
 //Update Route
-// router.put('/:id', (req, res) => {
-//     Restaurant.findById(req.params.restaurantId)
-//     .then(restaurant => {
-//         const restaurant = user.restaurants.id(req.params.id)
-//         const updatedRestaurant = req.body
-//         if (updatedRestaurant.name) {
-//             restaurant.name = updatedRestaurant.name
-//         }
-//         return restaurant.save()
-//     })
-//     .then(restaurant => {
-//         res.send(restaurant)
-//     })
-// })
+router.put('/:id', (req, res) => {
+    User.findById(req.params.userId)
+    .then(user => {
+         user.restaurants.id(req.params.id).set
+         (req.body)
+        return user.save()
+        
+    })
+    .then(restaurant => {
+        res.send(restaurant)
+    })
+})
 
 module.exports = router
