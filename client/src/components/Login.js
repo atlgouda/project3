@@ -4,7 +4,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import 'typeface-roboto';
 
-const StyledLogInHeader = styled.div`
+const StyledHeader = styled.div`
     background-color: silver;
     display: flex;
     justify-content: center;
@@ -89,7 +89,7 @@ handleSubmit = async (event) => {
     return (
       <div>
         
-        <StyledLogInHeader><h1>Users</h1></StyledLogInHeader>
+        <StyledHeader><h1>Users</h1></StyledHeader>
         <h2>Please select a User</h2>
         {usersList}
         <br></br>

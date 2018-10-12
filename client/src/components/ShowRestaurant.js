@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
+const StyledHeader = styled.div`
+    background-color: silver;
+    display: flex;
+    justify-content: center;
+`
+
 const ImageContainer = styled.div`
     padding: 3px;
     img {
@@ -16,6 +22,8 @@ export default class ShowRestaurant extends Component {
     
     state = {
         restaurant: {},
+        updatedRestaurant: {},
+        editedRestaurant: {}
         
         
     }
@@ -33,6 +41,25 @@ export default class ShowRestaurant extends Component {
     componentDidMount = () =>{
         this.getRestaurant()
     }
+
+    handleChange = (event) => {
+        //take it
+        const updatedRestaurant = { ...this.state.updatedRestaurant }
+        //change it
+        updatedRestaurant[event.target.name] = event.target.value
+        //put it back
+        this.setState({ updatedRestaurant })
+      }
+      //push into API/Database
+      handleSubmit = async (event) => {
+        //prevent page from reloading
+        event.preventDefault()
+        const response = await axios.put('', this.state.updatedRestaurant)
+        //push response.data into array
+        const editedRestaurant = [...this.state.restaurants]
+        editedRestaurant.push(response.data)
+        this.setState({ editedRestaurant })
+      }
  
     render() {
         // const userId = 
@@ -53,9 +80,13 @@ export default class ShowRestaurant extends Component {
         )
     return (
       <div>
-          <h1>{this.state.restaurant.name}</h1>
+          <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
           {restaurantInfo}
-        
+        <div className="formDiv">
+        <form onSubmit={this.handleSubmit}>
+            Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/> <br></br>
+        </form>
+        </div>
           
               </div>
     )

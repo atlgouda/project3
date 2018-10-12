@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-
+import styled from 'styled-components'
 import EditUser from './EditUser'
+
+const StyledHeader = styled.div`
+    background-color: silver;
+    display: flex;
+    justify-content: center;
+`
 
 export default class RestaurantList extends Component {
     state = {
@@ -69,6 +75,7 @@ export default class RestaurantList extends Component {
       console.log(userId)
     //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
         return (
+            
             <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
             key={i}
             >
@@ -88,7 +95,9 @@ export default class RestaurantList extends Component {
     return (
         
       <div>
+        <StyledHeader>
         <h1>{this.state.user.name}'s Page</h1>
+        </StyledHeader>
         {/* {console.log(this.state.user)} */}
         Neighborhood:{this.state.user.neighborhood}<br></br>
         Image Url: {this.state.user.imageUrl}<br></br>

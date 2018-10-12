@@ -31,7 +31,7 @@ const dishDive = new Restaurant ({
 })
 
 const firePit = new Restaurant ({
-    name: 'Fire Pit Tavern',
+    name: 'Firepit Tavern',
     cuisine: "Pizza",
     linkAddress: "http://www.firepitatl.com/",
     imageUrl: "https://i.imgur.com/Dsi0snU.jpg",
