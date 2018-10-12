@@ -4,11 +4,22 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import EditUser from './EditUser'
 
-
+const StyledListBody = styled.div`
+    background-color: #E2DDD9;
+    height: 100vh;
+    `
 const StyledSubHeader = styled.div`
 
     text-align: center;
     `
+const StyledToggleButton = styled.div`
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 150px;
+    margin-top: 15px;
+`
+
 
 const StompingGrounds = styled.div`
     text-align: center;
@@ -20,7 +31,7 @@ const ImageContainer = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-width: 40%;
+        max-width: 35%;
         border-radius: 150px;
     }
 `
@@ -65,7 +76,7 @@ const StyledButton = styled.div`
     
 `
 const StyledHeader = styled.div`
-    background-color: silver;
+    background-color: #9198A0;
     display: flex;
     justify-content: center;
 `
@@ -150,7 +161,7 @@ export default class RestaurantList extends Component {
 
         return (
 
-            <div>
+            <StyledListBody>
                 <StyledHeader>
                     <h1>{this.state.user.name}'s Page</h1>
                 </StyledHeader>
@@ -171,13 +182,13 @@ export default class RestaurantList extends Component {
                 
 
                 {/* // Toggle */}
-                <button onClick={this.buttonToggleUserEditView}>Edit User</button>
+                <StyledToggleButton>
+                <button onClick={this.buttonToggleUserEditView}>Add New Restaurant</button></StyledToggleButton>
                 <StyledSubHeader><h3>New Restaurants</h3></StyledSubHeader>
                 {listOfRestaurants}
                 {this.state.toggleEditUserView ?
-                    <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null
-                }<br></br>
-                <div>Add New Restaurant<br></br>
+                 
+                    <div><h4>Add New Restaurant</h4><br></br>
                     <form onSubmit={this.handleSubmit}>
                         Name: <input type="text"
                             name="name"
@@ -195,8 +206,10 @@ export default class RestaurantList extends Component {
                         <input type='submit' value="Create New Restaurant" />
                     </form>
 
-                </div>
-            </div>
+                </div> : null
+                }<br></br>
+                
+            </StyledListBody>
 
         )
     }

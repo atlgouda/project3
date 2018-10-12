@@ -4,12 +4,17 @@ import axios from 'axios'
 import styled from 'styled-components'
 import 'typeface-roboto';
 
+const StyledListBody = styled.div`
+    background-color: #E2DDD9;
+    height: 100vh;
+    `
+
 const StyledSubHeader = styled.div`
     text-align: center;
     `
 
 const StyledHeader = styled.div`
-    background-color: silver;
+    background-color: #9198A0;
     display: flex;
     justify-content: center;
 `
@@ -28,7 +33,7 @@ const StyledUserInfo = styled.div`
         
         a {
             text-decoration: none;
-            color: slategray;
+            color: black;
         }
 
     
@@ -91,7 +96,7 @@ handleSubmit = async (event) => {
             )
         })
     return (
-      <div>
+      <StyledListBody>
         
         <StyledHeader><h1>Users</h1></StyledHeader>
         <StyledSubHeader><h2>Please select a User</h2></StyledSubHeader>
@@ -118,7 +123,7 @@ handleSubmit = async (event) => {
         
         </form>
         
-      </div>
+      </StyledListBody>
     )
   }
 }

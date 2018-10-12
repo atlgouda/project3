@@ -28,8 +28,8 @@ Once a user comes to site, they will get to a landing page with the title and an
 React, MongoDB, Postman, Node, Heroku,HTML5, CSS, Github
 
 ## Version 2 Wishlist
-*Filter by neighborhood
-*Add Reviewed option
-*Toggle between new restaurants and reviewed
-*Sort by star rating
+* Filter by neighborhood
+* Add Reviewed option
+* Toggle between new restaurants and reviewed
+* Sort by star rating
 

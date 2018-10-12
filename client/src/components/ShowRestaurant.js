@@ -4,6 +4,16 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 // import RestaurantList from './RestaurantList'
 
+const StyledInputForm = styled.div`
+    margin-top: 10px;`
+const StyledInput = styled.div`
+    margin-top: 0px;`
+
+const StyledListBody = styled.div`
+    background-color: #E2DDD9;
+    height: 100vh;
+    `
+
 const StyledDelete = styled.div`
     font-size: 20px;
     padding: 10px;
@@ -25,7 +35,7 @@ const StyledDelete = styled.div`
 `
 
 const StyledHeader = styled.div`
-    background-color: silver;
+    background-color: #9198A0;
     display: flex;
     justify-content: center;
 `
@@ -57,6 +67,7 @@ const ImageContainer = styled.div`
         margin-left: auto;
         margin-right: auto;
         max-width: 60%;
+        max-height: 200px;
     }
 `
 
@@ -130,7 +141,7 @@ export default class ShowRestaurant extends Component {
               </div>
         )
     return (
-      <div>
+      <StyledListBody>
           <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
           <StyledButton>
             <Link to={`/users/${userId}`}>Back to user's page</Link>
@@ -141,13 +152,20 @@ export default class ShowRestaurant extends Component {
                 </Link>
           
           {restaurantInfo}
-        <div className="formDiv">
+        <StyledInputForm>
+        <h5>Edit Restaurant Info</h5>
         <form onSubmit={this.handleSubmit}>
-            Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/> <br></br>
+        
+        <StyledInput>Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/></StyledInput> <br></br>
+        <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
+        <StyledInput> Neighborhood: <input name="neighborhood" type="text" value={this.state.updatedRestaurant.neighborhood} onChange={this.handleChange}/> </StyledInput><br></br>
+        <StyledInput> Image URL: <input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/> </StyledInput><br></br>
+        <StyledInput>Website URL:<input name="linkAddress" type="text" value={this.state.updatedRestaurant.linkAddress} onChange={this.handleChange}/></StyledInput> <br></br>
         </form>
-        </div>
+        <input type='submit' value="Submit" />
+        </StyledInputForm>
           
-              </div>
+              </StyledListBody>
     )
   }
 }
