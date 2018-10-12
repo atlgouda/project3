@@ -33,8 +33,10 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     User.findById(req.params.userId)
     .then(user => {
-         user.restaurants.id(req.params.id).set
-         (req.body)
+         const restaurant = user.restaurants.id(req.params.id)
+         console.log("RESTAURANT", restaurant)
+         restaurant.set(req.body)
+         console.log("RESTAURANT AFTER SAVE", restaurant)
         return user.save()
         
     })

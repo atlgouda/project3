@@ -1,13 +1,36 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import RestaurantList from './RestaurantList'
+
 
 const StyledHeader = styled.div`
     background-color: silver;
     display: flex;
     justify-content: center;
 `
-
+const StyledButton = styled.div`
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    background-color: darkblue;
+    opacity: 0.6;
+    border-radius: 40px;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    
+`
 const ImageContainer = styled.div`
     padding: 3px;
     img {
@@ -44,6 +67,7 @@ export default class ShowRestaurant extends Component {
 
     handleChange = (event) => {
         //take it
+        
         const updatedRestaurant = { ...this.state.updatedRestaurant }
         //change it
         updatedRestaurant[event.target.name] = event.target.value
@@ -54,7 +78,9 @@ export default class ShowRestaurant extends Component {
       handleSubmit = async (event) => {
         //prevent page from reloading
         event.preventDefault()
-        const response = await axios.put('', this.state.updatedRestaurant)
+        const userId = this.props.match.params.userId
+        const restaurantId = this.props.match.params.restaurantId
+        const response = await axios.put(`/api/users/${userId}/restaurants/${restaurantId}`, this.state.updatedRestaurant)
         //push response.data into array
         const editedRestaurant = [...this.state.restaurants]
         editedRestaurant.push(response.data)
@@ -81,6 +107,10 @@ export default class ShowRestaurant extends Component {
     return (
       <div>
           <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
+          {/* <StyledButton>
+            <Link to={RestaurantList}>Back to user's page</Link>
+        </StyledButton> */}
+          
           {restaurantInfo}
         <div className="formDiv">
         <form onSubmit={this.handleSubmit}>

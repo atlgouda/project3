@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom'
 
 import Home from './components/Home'
-import LogIn from './components/LogIn'
+// import Login from './components/Login'
 import RestaurantList from './components/RestaurantList';
 import ShowRestaurant from './components/ShowRestaurant'
+import LogIn from './components/LogIn';
 
 class App extends Component {
   render() {
