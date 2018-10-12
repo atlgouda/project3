@@ -4,6 +4,41 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import EditUser from './EditUser'
 
+const StompingGrounds = styled.div`
+    text-align: center;
+    font-weight: bold;
+`
+const ImageContainer = styled.div`
+    padding: 3px;
+    img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 60%;
+        border-radius: 150px;
+    }
+`
+const StyledButton = styled.div`
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    background-color: darkblue;
+    opacity: 0.6;
+    border-radius: 40px;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    
+    
+`
 const StyledHeader = styled.div`
     background-color: silver;
     display: flex;
@@ -98,9 +133,16 @@ export default class RestaurantList extends Component {
         <StyledHeader>
         <h1>{this.state.user.name}'s Page</h1>
         </StyledHeader>
+        <StyledButton>
+            <Link to='/login'>Back to Users Page</Link>
+        </StyledButton>
         {/* {console.log(this.state.user)} */}
-        Neighborhood:{this.state.user.neighborhood}<br></br>
-        Image Url: {this.state.user.imageUrl}<br></br>
+        <ImageContainer> <img src={this.state.user.imageUrl} alt="user"/><br></br>
+        </ImageContainer>
+        <StompingGrounds>
+        Stomping Grounds:{this.state.user.neighborhood}<br></br>
+        </StompingGrounds>
+        
 {/* Delete User */}
         <Link to='/login'>
         <button onClick={() => this.handleDelete()} type="submit" value='Delete User'>Delete</button>
