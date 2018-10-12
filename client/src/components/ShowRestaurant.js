@@ -86,10 +86,10 @@ export default class ShowRestaurant extends Component {
         editedRestaurant.push(response.data)
         this.setState({ editedRestaurant })
       }
- 
+  
     render() {
-        // const userId = 
-        // this.props.match.params.userId
+        const userId = 
+        this.props.match.params.userId
         // const restaurantId=
         // this.state
         const restaurantInfo = (
@@ -107,9 +107,9 @@ export default class ShowRestaurant extends Component {
     return (
       <div>
           <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
-          {/* <StyledButton>
-            <Link to={RestaurantList}>Back to user's page</Link>
-        </StyledButton> */}
+          <StyledButton>
+            <Link to={`/users/${userId}`}>Back to user's page</Link>
+        </StyledButton>
           
           {restaurantInfo}
         <div className="formDiv">
