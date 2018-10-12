@@ -33,3 +33,5 @@ React, MongoDB, Postman, Node, Heroku,HTML5, CSS, Github
 * Toggle between new restaurants and reviewed
 * Sort by star rating
 
+## Shout Outs
+Moon, John, Taylor, Ivy, Emmy, Chris, Qing
