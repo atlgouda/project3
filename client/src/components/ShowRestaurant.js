@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import RestaurantList from './RestaurantList'
+// import RestaurantList from './RestaurantList'
 
 const StyledDelete = styled.div`
     font-size: 20px;
@@ -65,7 +65,7 @@ export default class ShowRestaurant extends Component {
     state = {
         restaurant: {},
         updatedRestaurant: {},
-        editedRestaurant: {}
+        // editedRestaurant: {}
         
         
     }
@@ -80,10 +80,15 @@ export default class ShowRestaurant extends Component {
         })
     }
 
-    componentDidMount = () =>{
+    componentDidMount = () => {
         this.getRestaurant()
     }
-
+    handleDelete = async (event) => {
+        const userId = this.props.match.params.userId
+        const restaurantId = this.props.match.params.restaurantId
+        axios.delete(`/api/users/${userId}/restaurants/${restaurantId}`)
+        await this.getRestaurant()
+    }
     handleChange = (event) => {
         //take it
         
@@ -101,9 +106,10 @@ export default class ShowRestaurant extends Component {
         const restaurantId = this.props.match.params.restaurantId
         const response = await axios.put(`/api/users/${userId}/restaurants/${restaurantId}`, this.state.updatedRestaurant)
         //push response.data into array
-        const editedRestaurant = [...this.state.restaurants]
-        editedRestaurant.push(response.data)
-        this.setState({ editedRestaurant })
+        // const editedRestaurant = [...this.state.restaurants]
+        // editedRestaurant.push(response.data)
+        const updatedRestaurant = response.data
+        this.setState({ updatedRestaurant })
       }
   
     render() {

@@ -44,5 +44,16 @@ router.put('/:id', (req, res) => {
         res.send(restaurant)
     })
 })
+//Delete
+router.delete('/:id', async (req,res) => {
+    const user = await User.findById(req.params.userId)
+    // const restaurant = user.restaurants.id(req.params.id)
+    // await Restaurant.findByIdAndRemove(req.params.id)
+    return user.update({ $pull: { restaurants: {_id: req.params.id}}})
+    .then( user => {
+        res.send(user)
+    })
+    
+})
 
 module.exports = router
