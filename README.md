@@ -15,9 +15,9 @@ Once a user comes to site, they will get to a landing page with the title and an
 * Create a new restaurant
 
 ## Link to Site
-
+[ATL Future Favs](https://new-restaurant-list.herokuapp.com/)
 ## Link to Trello Board
-[Future Favs](https://trello.com/b/QcjtaeRN/gouda-wdi-project-3)
+[Future Favs Trello](https://trello.com/b/QcjtaeRN/gouda-wdi-project-3)
 
 ## ERD
 <img src = "https://i.imgur.com/KIVhXU1.jpg?1">
