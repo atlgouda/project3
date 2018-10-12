@@ -4,6 +4,25 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import RestaurantList from './RestaurantList'
 
+const StyledDelete = styled.div`
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100px;
+    background-color: red;
+    opacity: 0.8;
+    border-radius: 40px;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: white;
+}
+`
 
 const StyledHeader = styled.div`
     background-color: silver;
@@ -110,6 +129,10 @@ export default class ShowRestaurant extends Component {
           <StyledButton>
             <Link to={`/users/${userId}`}>Back to user's page</Link>
         </StyledButton>
+
+        <Link to={`/users/${userId}`}>
+                    <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete Restaurant'>Delete</StyledDelete>
+                </Link>
           
           {restaurantInfo}
         <div className="formDiv">

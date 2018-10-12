@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import EditUser from './EditUser'
 
+
+const StyledSubHeader = styled.div`
+
+    text-align: center;
+    `
+
 const StompingGrounds = styled.div`
     text-align: center;
     font-weight: bold;
@@ -14,9 +20,28 @@ const ImageContainer = styled.div`
         display: block;
         margin-left: auto;
         margin-right: auto;
-        max-width: 60%;
+        max-width: 40%;
         border-radius: 150px;
     }
+`
+const StyledDelete = styled.div`
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100px;
+    background-color: red;
+    opacity: 0.8;
+    border-radius: 40px;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    text-align: center;
+    a {
+        text-decoration: none;
+        color: white;
+}
 `
 const StyledButton = styled.div`
     font-size: 20px;
@@ -54,7 +79,7 @@ export default class RestaurantList extends Component {
     }
 
     buttonToggleUserEditView = () => {
-          this.setState({
+        this.setState({
             toggleEditUserView: !this.state.toggleEditUserView
         })
     }
@@ -76,7 +101,7 @@ export default class RestaurantList extends Component {
     componentDidMount = () => {
         this.getUser()
     }
-    handleDelete = async(event) => {
+    handleDelete = async (event) => {
         const userId = this.props.match.params.userId
         axios.delete(`/api/users/${userId}`)
         await this.getUser()
@@ -84,11 +109,11 @@ export default class RestaurantList extends Component {
 
     handleChange = (event) => {
         //take it
-        const newRestaurant = { ...this.state.newRestaurant}
+        const newRestaurant = { ...this.state.newRestaurant }
         //change it
         newRestaurant[event.target.name] = event.target.value
         //put it back
-       this.setState({ newRestaurant })
+        this.setState({ newRestaurant })
     }
     //push into API
     handleSubmit = async (event) => {
@@ -103,79 +128,76 @@ export default class RestaurantList extends Component {
         this.setState({ restaurants })
     }
 
-  render() {
-    // const userId = this.props.match.params.userId  
-      const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
-      const userId = this.props.match.params.userId  
-      console.log(userId)
-    //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
-        return (
-            
-            <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
-            key={i}
-            >
-            <div key={i}>
-                <br></br>
-            Name: {restaurant.name}
-            
-            <br></br>
-           
-            In: {restaurant.neighborhood}
-            </div>
-            </Link>
+    render() {
+        // const userId = this.props.match.params.userId  
+        const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
+            const userId = this.props.match.params.userId
+            console.log(userId)
+            //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
+            return (
+
+                <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
+                    key={i}
+                >
+                    <div key={i}>
+                        <br></br>
+                        {restaurant.name} in {restaurant.neighborhood}
+                    </div>
+                </Link>
             )
         })
-        
-        
-    return (
-        
-      <div>
-        <StyledHeader>
-        <h1>{this.state.user.name}'s Page</h1>
-        </StyledHeader>
-        <StyledButton>
-            <Link to='/login'>Back to Users Page</Link>
-        </StyledButton>
-        {/* {console.log(this.state.user)} */}
-        <ImageContainer> <img src={this.state.user.imageUrl} alt="user"/><br></br>
-        </ImageContainer>
-        <StompingGrounds>
-        Stomping Grounds:{this.state.user.neighborhood}<br></br>
-        </StompingGrounds>
-        
-{/* Delete User */}
-        <Link to='/login'>
-        <button onClick={() => this.handleDelete()} type="submit" value='Delete User'>Delete</button>
-        </Link>
 
-{/* // Toggle */}
-        <button onClick={this.buttonToggleUserEditView}>Edit User</button>
-        <h3>New Restaurants</h3>
-        {listOfRestaurants}
-        {this.state.toggleEditUserView ?
-        <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null 
-    }<br></br>
-        <div>Add New Restaurant<br></br>
-        <form onSubmit={this.handleSubmit}>
-        Name: <input type="text"
-        name="name"
-        value={this.state.newRestaurant.name}
-        onChange={this.handleChange} /><br></br>
-        Neighborhood: <input type='text'
-        name="neighborhood"
-        value={this.state.newRestaurant.neighborhood}
-        onChange={this.handleChange} /><br></br>
-        Image URL: <input type="text"
-        name='imageUrl'
-        value={this.state.newRestaurant.imageUrl}
-        onChange={this.handleChange} />
-        <br></br>
-        <input type='submit' value="Create New Restaurant" />
-        </form>
-        
-        </div>
-        </div>
-     
-    )
+
+        return (
+
+            <div>
+                <StyledHeader>
+                    <h1>{this.state.user.name}'s Page</h1>
+                </StyledHeader>
+                <StyledButton>
+                    <Link to='/login'>Back</Link>
+                </StyledButton>
+                {/* Delete User */}
+                <Link to='/login'>
+                    <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete User'>Delete</StyledDelete>
+                </Link>
+                {/* {console.log(this.state.user)} */}
+                <ImageContainer> <img src={this.state.user.imageUrl} alt="user" /><br></br>
+                </ImageContainer>
+                <StompingGrounds>
+                    Stomping Grounds:{this.state.user.neighborhood}<br></br>
+                </StompingGrounds>
+
+                
+
+                {/* // Toggle */}
+                <button onClick={this.buttonToggleUserEditView}>Edit User</button>
+                <StyledSubHeader><h3>New Restaurants</h3></StyledSubHeader>
+                {listOfRestaurants}
+                {this.state.toggleEditUserView ?
+                    <EditUser currentUser={this.props.match.params.userId} toggleView={this.buttonToggleUserEditView} /> : null
+                }<br></br>
+                <div>Add New Restaurant<br></br>
+                    <form onSubmit={this.handleSubmit}>
+                        Name: <input type="text"
+                            name="name"
+                            value={this.state.newRestaurant.name}
+                            onChange={this.handleChange} /><br></br>
+                        Neighborhood: <input type='text'
+                            name="neighborhood"
+                            value={this.state.newRestaurant.neighborhood}
+                            onChange={this.handleChange} /><br></br>
+                        Image URL: <input type="text"
+                            name='imageUrl'
+                            value={this.state.newRestaurant.imageUrl}
+                            onChange={this.handleChange} />
+                        <br></br>
+                        <input type='submit' value="Create New Restaurant" />
+                    </form>
+
+                </div>
+            </div>
+
+        )
     }
 }

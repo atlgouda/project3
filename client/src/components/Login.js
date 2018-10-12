@@ -4,6 +4,10 @@ import axios from 'axios'
 import styled from 'styled-components'
 import 'typeface-roboto';
 
+const StyledSubHeader = styled.div`
+    text-align: center;
+    `
+
 const StyledHeader = styled.div`
     background-color: silver;
     display: flex;
@@ -90,10 +94,10 @@ handleSubmit = async (event) => {
       <div>
         
         <StyledHeader><h1>Users</h1></StyledHeader>
-        <h2>Please select a User</h2>
+        <StyledSubHeader><h2>Please select a User</h2></StyledSubHeader>
         {usersList}
         <br></br>
-        <h2>Or Create Your Own!</h2>
+        <StyledSubHeader><h2>Or Create Your Own!</h2></StyledSubHeader>
         <br></br>
         <form onSubmit={this.handleSubmit}>
         Name: <input type="text"
