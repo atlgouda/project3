@@ -140,32 +140,30 @@ export default class ShowRestaurant extends Component {
        
               </div>
         )
-    return (
-      <StyledListBody>
-          <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
-          <StyledButton>
-            <Link to={`/users/${userId}`}>Back to user's page</Link>
-        </StyledButton>
-
-        <Link to={`/users/${userId}`}>
-                    <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete Restaurant'>Delete</StyledDelete>
-                </Link>
-          
-          {restaurantInfo}
-        <StyledInputForm>
-        <h5>Edit Restaurant Info</h5>
-        <form onSubmit={this.handleSubmit}>
-        
-        <StyledInput>Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/></StyledInput> <br></br>
-        <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
-        <StyledInput> Neighborhood: <input name="neighborhood" type="text" value={this.state.updatedRestaurant.neighborhood} onChange={this.handleChange}/> </StyledInput><br></br>
-        <StyledInput> Image URL: <input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/> </StyledInput><br></br>
-        <StyledInput>Website URL:<input name="linkAddress" type="text" value={this.state.updatedRestaurant.linkAddress} onChange={this.handleChange}/></StyledInput> <br></br>
-        </form>
-        <input type='submit' value="Submit" />
-        </StyledInputForm>
-          
-              </StyledListBody>
-    )
-  }
-}
+        return (
+            <StyledListBody>
+                <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
+                <StyledButton>
+                  <Link to={`/users/${userId}`}>Back to user's page</Link>
+              </StyledButton>
+      
+              <Link to={`/users/${userId}`}>
+                          <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete Restaurant'>Delete</StyledDelete>
+                      </Link>
+                
+                {restaurantInfo}
+              <StyledInputForm>
+                  <h4>Edit Restaurant</h4>
+              <form onSubmit={this.handleSubmit}>
+                  <StyledInput>Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/></StyledInput> <br></br>
+                  
+              </form>
+              {/* <form onSubmit={this.handleSubmit}> */}
+              <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
+              {/* </form> */}
+              </StyledInputForm>
+                
+                    </StyledListBody>
+          )
+        }
+      }
