@@ -36,11 +36,11 @@ const ImageContainer = styled.div`
     }
 `
 const StyledDelete = styled.div`
-    font-size: 20px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 100px;
+    max-width: 75px;
     background-color: red;
     opacity: 0.8;
     border-radius: 40px;
@@ -55,11 +55,11 @@ const StyledDelete = styled.div`
 }
 `
 const StyledButton = styled.div`
-    font-size: 20px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 200px;
+    max-width: 150px;
     background-color: darkblue;
     opacity: 0.6;
     border-radius: 40px;

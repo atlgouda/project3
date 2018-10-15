@@ -15,11 +15,11 @@ const StyledListBody = styled.div`
     `
 
 const StyledDelete = styled.div`
-    font-size: 20px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 100px;
+    max-width: 75px;
     background-color: red;
     opacity: 0.8;
     border-radius: 40px;
@@ -40,11 +40,11 @@ const StyledHeader = styled.div`
     justify-content: center;
 `
 const StyledButton = styled.div`
-    font-size: 20px;
-    padding: 10px;
+    font-size: 15px;
+    padding: 8px;
     margin-top: 10px;
     margin-bottom: 10px;
-    max-width: 200px;
+    max-width: 150px;
     background-color: darkblue;
     opacity: 0.6;
     border-radius: 40px;
@@ -160,14 +160,15 @@ export default class ShowRestaurant extends Component {
               </form>
               <form onSubmit={this.handleSubmit}>
               <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
+              
               </form>
               <form onSubmit={this.handleSubmit}>
               <StyledInput>Neighborhood:<input name="neighborhood" type="text" value={this.state.updatedRestaurant.neighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
               </form>
               <form onSubmit={this.handleSubmit}>
               <StyledInput>Image URL:<input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
+              
               </form>
-             
               
 
               </StyledInputForm>
