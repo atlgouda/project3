@@ -157,17 +157,14 @@ export default class ShowRestaurant extends Component {
               <form onSubmit={this.handleSubmit}>
                   <StyledInput>Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/></StyledInput> <br></br>
                   
-              </form>
-              <form onSubmit={this.handleSubmit}>
+              
               <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
               
-              </form>
-              <form onSubmit={this.handleSubmit}>
+            
               <StyledInput>Neighborhood:<input name="neighborhood" type="text" value={this.state.updatedRestaurant.neighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
-              </form>
-              <form onSubmit={this.handleSubmit}>
-              <StyledInput>Image URL:<input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
               
+              <StyledInput>Image URL:<input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
+              <input type='submit' value='submit'/>
               </form>
              
 
