@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-// import EditUser from './EditUser'
+import EditUser from './EditUser'
 
 const StyledListBody = styled.div`
     background-color: #E2DDD9;
@@ -198,10 +198,15 @@ export default class RestaurantList extends Component {
                             name="neighborhood"
                             value={this.state.newRestaurant.neighborhood}
                             onChange={this.handleChange} /><br></br>
+                        Cuisine: <input type="text"
+                            name='cuisine'
+                            value={this.state.newRestaurant.cuisine}
+                            onChange={this.handleChange} />
                         Image URL: <input type="text"
                             name='imageUrl'
                             value={this.state.newRestaurant.imageUrl}
                             onChange={this.handleChange} />
+
                         <br></br>
                         <input type='submit' value="Create New Restaurant" />
                     </form>
