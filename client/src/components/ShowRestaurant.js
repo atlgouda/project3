@@ -131,10 +131,10 @@ export default class ShowRestaurant extends Component {
         const restaurantInfo = (
         <div>
         <ImageContainer>
-            <img src={this.state.restaurant.imageUrl} alt="restaurant" />
+            <img src={this.state.restaurant.restImageUrl} alt="restaurant" />
         </ImageContainer>
         Serving {this.state.restaurant.cuisine} to the 
-        good people of {this.state.restaurant.neighborhood}<br></br>
+        good people of {this.state.restaurant.restNeighborhood}<br></br>
         <a href={this.state.restaurant.linkAddress}>Restaurant Website</a><br></br>
        
        
@@ -142,7 +142,7 @@ export default class ShowRestaurant extends Component {
         )
         return (
             <StyledListBody>
-                <StyledHeader><h1>{this.state.restaurant.name}</h1></StyledHeader>
+                <StyledHeader><h1>{this.state.restaurant.restName}</h1></StyledHeader>
                 <StyledButton>
                   <Link to={`/users/${userId}`}>Back to user's page</Link>
               </StyledButton>
@@ -155,15 +155,15 @@ export default class ShowRestaurant extends Component {
               <StyledInputForm>
                   <h4>Edit Restaurant</h4>
               <form onSubmit={this.handleSubmit}>
-                  <StyledInput>Name:<input name="name" type="text" value={this.state.updatedRestaurant.name} onChange={this.handleChange}/></StyledInput> <br></br>
+                  <StyledInput>Name:<input name="restName" type="text" value={this.state.updatedRestaurant.restName} onChange={this.handleChange}/></StyledInput> <br></br>
                   
               
               <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
               
             
-              <StyledInput>Neighborhood:<input name="neighborhood" type="text" value={this.state.updatedRestaurant.neighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
+              <StyledInput>Neighborhood:<input name="restNeighborhood" type="text" value={this.state.updatedRestaurant.restNeighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
               
-              <StyledInput>Image URL:<input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
+              <StyledInput>Image URL:<input name="restImageUrl" type="text" value={this.state.updatedRestaurant.restImageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
               <input type='submit' value='submit'/>
               </form>
              

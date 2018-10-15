@@ -7,43 +7,43 @@ mongoose.Promise = global.Promise
 const { User, Restaurant } = require ('./model')
 
 const goldenEagle = new Restaurant({
-    name: "Golden Eagle",
+    restName: "Golden Eagle",
     cuisine: "American",
     linkAddress: "http://www.goldeneagleatl.com/",
-    imageUrl: "https://i.imgur.com/pNVpw4n.jpg",
-    neighborhood: "Reynoldstown"
+    restImageUrl: "https://i.imgur.com/pNVpw4n.jpg",
+    restNeighborhood: "Reynoldstown"
 })
 
 const bartaco = new Restaurant ({
-    name: "bartaco",
+    restName: "bartaco",
     cuisine: "Mexican",
     linkAddress: "https://bartaco.com/location/atlanta-inman/",
-    imageUrl: "https://i.imgur.com/fSgZUKO.jpg",
-    neighborhood: "Inman Park"
+    restImageUrl: "https://i.imgur.com/fSgZUKO.jpg",
+    restNeighborhood: "Inman Park"
 })
 
 const dishDive = new Restaurant ({
-    name: "Dish Dive",
+    restName: "Dish Dive",
     cuisine: "American",
     linkAddress: "http://www.dishdivekitchen.com/",
-    imageUrl: "https://i.imgur.com/WRf2clI.jpg",
-    neighborhood: "Decatur"
+    restImageUrl: "https://i.imgur.com/WRf2clI.jpg",
+    restNeighborhood: "Decatur"
 })
 
 const firePit = new Restaurant ({
-    name: 'Firepit Tavern',
+    restName: 'Firepit Tavern',
     cuisine: "Pizza",
     linkAddress: "http://www.firepitatl.com/",
-    imageUrl: "https://i.imgur.com/Dsi0snU.jpg",
-    neighborhood: "Grant Park"
+    restImageUrl: "https://i.imgur.com/Dsi0snU.jpg",
+    restNeighborhood: "Grant Park"
 })
 
 const no246 = new Restaurant ({
-    name: "Number 246",
+    restName: "Number 246",
     cuisine: "Italian",
     linkAddress: "http://www.no246.com/",
-    imageUrl: "https://i.imgur.com/VbBnJtU.jpg",
-    neighborhood: "Decatur"
+    restImageUrl: "https://i.imgur.com/VbBnJtU.jpg",
+    restNeighborhood: "Decatur"
 })
 
 const gouda = new User({

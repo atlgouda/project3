@@ -1,11 +1,11 @@
 const Schema = require('mongoose').Schema
 
 const RestaurantSchema = new Schema({
-    name: String,
+    restName: String,
     cuisine: String,
     linkAddress: String,
-    imageUrl: String,
-    neighborhood: String,
+    restImageUrl: String,
+    restNeighborhood: String,
 })
 const UserSchema = new Schema({
     name: String,

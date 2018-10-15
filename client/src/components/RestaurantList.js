@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import EditUser from './EditUser'
+
 
 const StyledListBody = styled.div`
     background-color: #E2DDD9;
     height: 120vh;
     `
 const StyledSubHeader = styled.div`
-
     text-align: center;
     `
 const StyledToggleButton = styled.div`
@@ -152,7 +151,7 @@ export default class RestaurantList extends Component {
                 >
                     <div key={i}>
                         <br></br>
-                        {restaurant.name} in {restaurant.neighborhood}
+                        {restaurant.restName} in {restaurant.restNeighborhood}
                     </div>
                 </Link>
             )
@@ -191,20 +190,20 @@ export default class RestaurantList extends Component {
                     <div><h4>Add New Restaurant</h4><br></br>
                     <form onSubmit={this.handleSubmit}>
                         Name: <input type="text"
-                            name="name"
-                            value={this.state.newRestaurant.name}
+                            name="restName"
+                            value={this.state.newRestaurant.restName}
                             onChange={this.handleChange} /><br></br>
                         Neighborhood: <input type='text'
-                            name="neighborhood"
-                            value={this.state.newRestaurant.neighborhood}
+                            name="restNeighborhood"
+                            value={this.state.newRestaurant.restNeighborhood}
                             onChange={this.handleChange} /><br></br>
                         Cuisine: <input type="text"
                             name='cuisine'
                             value={this.state.newRestaurant.cuisine}
                             onChange={this.handleChange} />
                         Image URL: <input type="text"
-                            name='imageUrl'
-                            value={this.state.newRestaurant.imageUrl}
+                            name='restImageUrl'
+                            value={this.state.newRestaurant.restImageUrl}
                             onChange={this.handleChange} />
 
                         <br></br>
