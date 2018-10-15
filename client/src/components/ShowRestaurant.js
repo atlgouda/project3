@@ -2,18 +2,17 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-// import RestaurantList from './RestaurantList'
 
 const StyledInputForm = styled.div`
-    margin-top: 10px;`
+    margin-top: 10px;
+    `
 const StyledInput = styled.div`
-    margin-top: 0px;`
-
+    margin-top: 0px;
+    `
 const StyledListBody = styled.div`
     background-color: #E2DDD9;
     height: 100vh;
     `
-
 const StyledDelete = styled.div`
     font-size: 15px;
     padding: 8px;
@@ -33,7 +32,6 @@ const StyledDelete = styled.div`
         color: white;
 }
 `
-
 const StyledHeader = styled.div`
     background-color: #9198A0;
     display: flex;
@@ -56,9 +54,7 @@ const StyledButton = styled.div`
     a {
         text-decoration: none;
         color: white;
-    }
-    
-    
+    }  
 `
 const ImageContainer = styled.div`
     padding: 3px;
@@ -72,19 +68,15 @@ const ImageContainer = styled.div`
 `
 
 export default class ShowRestaurant extends Component {
-    
+
     state = {
         restaurant: {},
         updatedRestaurant: {},
-        // editedRestaurant: {}
-        
-        
     }
     getRestaurant = async () => {
         const userId = this.props.match.params.userId
-        const restaurantId = 
-        this.props.match.params.restaurantId
-        
+        const restaurantId =
+            this.props.match.params.restaurantId
         const response = await axios.get(`/api/users/${userId}/restaurants/${restaurantId}`)
         this.setState({
             restaurant: response.data,
@@ -101,82 +93,54 @@ export default class ShowRestaurant extends Component {
         await this.getRestaurant()
     }
     handleChange = (event) => {
-        //take it
-        
         const updatedRestaurant = { ...this.state.updatedRestaurant }
-        //change it
         updatedRestaurant[event.target.name] = event.target.value
-        //put it back
         this.setState({ updatedRestaurant })
-      }
-      //push into API/Database
-      handleSubmit = async (event) => {
-        //prevent page from reloading
+    }
+
+    handleSubmit = async (event) => {
         event.preventDefault()
         const userId = this.props.match.params.userId
         const restaurantId = this.props.match.params.restaurantId
         const response = await axios.put(`/api/users/${userId}/restaurants/${restaurantId}`, this.state.updatedRestaurant)
-        //push response.data into array
-        // const editedRestaurant = [...this.state.restaurants]
-        // editedRestaurant.push(response.data)
         const updatedRestaurant = response.data
         this.setState({ updatedRestaurant })
-      }
-  
-    render() {
-        const userId = 
-        this.props.match.params.userId
+    }
 
-        // const restaurantId=
-        // this.state
+    render() {
+        const userId =
+            this.props.match.params.userId
         const restaurantInfo = (
-        <div>
-        <ImageContainer>
-            <img src={this.state.restaurant.restImageUrl} alt="restaurant" />
-        </ImageContainer>
-        Serving {this.state.restaurant.cuisine} to the 
+            <div>
+                <ImageContainer>
+                    <img src={this.state.restaurant.restImageUrl} alt="restaurant" />
+                </ImageContainer>
+                Serving {this.state.restaurant.cuisine} to the
         good people of {this.state.restaurant.restNeighborhood}<br></br>
-        <a href={this.state.restaurant.linkAddress}>Restaurant Website</a><br></br>
-       
-       
-              </div>
+                <a href={this.state.restaurant.linkAddress}>Restaurant Website</a><br></br>
+            </div>
         )
         return (
             <StyledListBody>
                 <StyledHeader><h1>{this.state.restaurant.restName}</h1></StyledHeader>
                 <StyledButton>
-                  <Link to={`/users/${userId}`}>Back to user's page</Link>
-              </StyledButton>
-      
-              <Link to={`/users/${userId}`}>
-                          <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete Restaurant'>Delete</StyledDelete>
-                      </Link>
-                
+                    <Link to={`/users/${userId}`}>Back to user's page</Link>
+                </StyledButton>
+                <Link to={`/users/${userId}`}>
+                    <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete Restaurant'>Delete</StyledDelete>
+                </Link>
                 {restaurantInfo}
-              <StyledInputForm>
-                  <h4>Edit Restaurant</h4>
-              <form onSubmit={this.handleSubmit}>
-                  <StyledInput>Name:<input name="restName" type="text" value={this.state.updatedRestaurant.restName} onChange={this.handleChange}/></StyledInput> <br></br>
-                  
-              
-              <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange}/></StyledInput> <br></br>
-              
-            
-              <StyledInput>Neighborhood:<input name="restNeighborhood" type="text" value={this.state.updatedRestaurant.restNeighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
-              
-              <StyledInput>Image URL:<input name="restImageUrl" type="text" value={this.state.updatedRestaurant.restImageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
-            
-
-
-              <input type='submit' value='submit' />
-              </form>
-             
-
-              </StyledInputForm>
-              
-                
-              </StyledListBody>
-                      
-          )
-        }
-      }
+                <StyledInputForm>
+                    <h4>Edit Restaurant</h4>
+                    <form onSubmit={this.handleSubmit}>
+                        <StyledInput>Name:<input name="restName" type="text" value={this.state.updatedRestaurant.restName} onChange={this.handleChange} /></StyledInput> <br></br>
+                        <StyledInput>Cuisine:<input name="cuisine" type="text" value={this.state.updatedRestaurant.cuisine} onChange={this.handleChange} /></StyledInput> <br></br>
+                        <StyledInput>Neighborhood:<input name="restNeighborhood" type="text" value={this.state.updatedRestaurant.restNeighborhood} onChange={this.handleChange} /></StyledInput> <br></br>
+                        <StyledInput>Image URL:<input name="restImageUrl" type="text" value={this.state.updatedRestaurant.restImageUrl} onChange={this.handleChange} /></StyledInput> <br></br>
+                        <input type='submit' value='submit' />
+                    </form>
+                </StyledInputForm>
+            </StyledListBody>
+        )
+    }
+}

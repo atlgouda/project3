@@ -60,7 +60,6 @@ const daniel = new User({
     restaurants: [goldenEagle, no246],
 })
 
-
 User.deleteMany({})
   .then(() => {
       return User.insertMany([gouda, daniel])

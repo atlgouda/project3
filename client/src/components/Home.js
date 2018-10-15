@@ -11,9 +11,7 @@ const StyledComeIn = styled.div`
     border-radius: 40px;
     font-weight: bolder;
     margin-left: auto;
-    margin-right: auto;
-    
-    
+    margin-right: auto;  
 `
 const StyledWelcome = styled.div`
     margin-right: 10%;
@@ -21,10 +19,8 @@ const StyledWelcome = styled.div`
     padding-top: 10%;
     padding-bottom: 10%;
     border-top: 20%;
-    
     font-weight: bolder;
     font-size: 6vh;
-
 `
 
 const LandingPage = styled.div`
@@ -33,7 +29,6 @@ const LandingPage = styled.div`
   height: 100vh; 
   background-position: center;
   background-repeat: no-repeat;
-  /* background-size: cover; */
   position: relative;
   max-width: 414;
   color: white;
@@ -43,21 +38,19 @@ const LandingPage = styled.div`
   }
  text-align: center;
  font-size: 100%;
- 
-
 `
 
 export default class Home extends Component {
   render() {
     return (
       <LandingPage>
-          <StyledWelcome>
+        <StyledWelcome>
           <Link to='/login'>ATL Future Favs</Link></StyledWelcome>
         <StyledComeIn>
-            <Link to='/login'>Come on in y'all</Link>
+          <Link to='/login'>Come on in y'all</Link>
         </StyledComeIn>
       </LandingPage>
-       
+
     )
   }
 }

@@ -18,8 +18,6 @@ const StyledToggleButton = styled.div`
     max-width: 150px;
     margin-top: 15px;
 `
-
-
 const StompingGrounds = styled.div`
     text-align: center;
     font-weight: bold;
@@ -70,9 +68,7 @@ const StyledButton = styled.div`
     a {
         text-decoration: none;
         color: white;
-    }
-    
-    
+    }  
 `
 const StyledHeader = styled.div`
     background-color: #9198A0;
@@ -102,7 +98,6 @@ export default class RestaurantList extends Component {
                 user: response.data,
                 restaurants: response.data.restaurants
             })
-
         } catch (error) {
             console.log(error)
         }
@@ -118,14 +113,11 @@ export default class RestaurantList extends Component {
     }
 
     handleChange = (event) => {
-        //take it
         const newRestaurant = { ...this.state.newRestaurant }
-        //change it
         newRestaurant[event.target.name] = event.target.value
-        //put it back
         this.setState({ newRestaurant })
     }
-    //push into API
+
     handleSubmit = async (event) => {
         event.preventDefault()
         console.log('sup dude')
@@ -139,16 +131,12 @@ export default class RestaurantList extends Component {
     }
 
     render() {
-        // const userId = this.props.match.params.userId  
         const listOfRestaurants = this.state.restaurants.map((restaurant, i) => {
             const userId = this.props.match.params.userId
             console.log(userId)
-            //   const restaurantId = this.state.restaurants.map((restaurant, i) => )
             return (
-
                 <Link to={`/users/${userId}/restaurants/${restaurant._id}`}
-                    key={i}
-                >
+                    key={i}>
                     <div key={i}>
                         <br></br>
                         {restaurant.restName} in {restaurant.restNeighborhood}
@@ -156,7 +144,6 @@ export default class RestaurantList extends Component {
                 </Link>
             )
         })
-
 
         return (
 
@@ -167,56 +154,42 @@ export default class RestaurantList extends Component {
                 <StyledButton>
                     <Link to='/login'>Back</Link>
                 </StyledButton>
-                {/* Delete User */}
                 <Link to='/login'>
                     <StyledDelete onClick={() => this.handleDelete()} type="submit" value='Delete User'>Delete</StyledDelete>
                 </Link>
-                {/* {console.log(this.state.user)} */}
                 <ImageContainer> <img src={this.state.user.imageUrl} alt="user" /><br></br>
                 </ImageContainer>
                 <StompingGrounds>
                     Stomping Grounds:{this.state.user.neighborhood}<br></br>
                 </StompingGrounds>
-
-                
-
-                {/* // Toggle */}
                 <StyledToggleButton>
-                <button onClick={this.buttonToggleUserEditView}>Add New Restaurant</button></StyledToggleButton>
+                    <button onClick={this.buttonToggleUserEditView}>Add New Restaurant</button></StyledToggleButton>
                 <StyledSubHeader><h3>New Restaurants</h3></StyledSubHeader>
                 {listOfRestaurants}
                 {this.state.toggleEditUserView ?
-                 
                     <div><h4>Add New Restaurant</h4><br></br>
-                    <form onSubmit={this.handleSubmit}>
-                        Name: <input type="text"
-                            name="restName"
-                            value={this.state.newRestaurant.restName}
-                            onChange={this.handleChange} /><br></br>
-                        Neighborhood: <input type='text'
-                            name="restNeighborhood"
-                            value={this.state.newRestaurant.restNeighborhood}
-                            onChange={this.handleChange} /><br></br>
-                        Cuisine: <input type="text"
-                            name='cuisine'
-                            value={this.state.newRestaurant.cuisine}
-                            onChange={this.handleChange} />
-                        Image URL: <input type="text"
-                            name='restImageUrl'
-                            value={this.state.newRestaurant.restImageUrl}
-                            onChange={this.handleChange} />
-
-                        <br></br>
-                    
-                        <button type='submit' >Create</button>
-                       
-                    </form>
-
-                </div> : null
+                        <form onSubmit={this.handleSubmit}>
+                            Name: <input type="text"
+                                name="restName"
+                                value={this.state.newRestaurant.restName}
+                                onChange={this.handleChange} /><br></br>
+                            Neighborhood: <input type='text'
+                                name="restNeighborhood"
+                                value={this.state.newRestaurant.restNeighborhood}
+                                onChange={this.handleChange} /><br></br>
+                            Cuisine: <input type="text"
+                                name='cuisine'
+                                value={this.state.newRestaurant.cuisine}
+                                onChange={this.handleChange} />
+                            Image URL: <input type="text"
+                                name='restImageUrl'
+                                value={this.state.newRestaurant.restImageUrl}
+                                onChange={this.handleChange} /><br></br>
+                            <button type='submit' >Create</button>
+                        </form>
+                    </div> : null
                 }<br></br>
-                
             </StyledListBody>
-
         )
     }
 }

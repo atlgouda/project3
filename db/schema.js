@@ -7,14 +7,13 @@ const RestaurantSchema = new Schema({
     restImageUrl: String,
     restNeighborhood: String,
 })
+
 const UserSchema = new Schema({
     name: String,
     imageUrl: String,
     neighborhood: String,
     restaurants: [RestaurantSchema],
 })
-
-
 
 module.exports = {
     UserSchema,
