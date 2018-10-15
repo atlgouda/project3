@@ -207,7 +207,9 @@ export default class RestaurantList extends Component {
                             onChange={this.handleChange} />
 
                         <br></br>
-                        <input type='submit' value="Create New Restaurant" />
+                    
+                        <button type='submit' >Create</button>
+                       
                     </form>
 
                 </div> : null

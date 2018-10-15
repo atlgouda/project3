@@ -126,6 +126,7 @@ export default class ShowRestaurant extends Component {
     render() {
         const userId = 
         this.props.match.params.userId
+
         // const restaurantId=
         // this.state
         const restaurantInfo = (
@@ -164,7 +165,10 @@ export default class ShowRestaurant extends Component {
               <StyledInput>Neighborhood:<input name="restNeighborhood" type="text" value={this.state.updatedRestaurant.restNeighborhood} onChange={this.handleChange}/></StyledInput> <br></br>
               
               <StyledInput>Image URL:<input name="restImageUrl" type="text" value={this.state.updatedRestaurant.restImageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
-              <input type='submit' value='submit'/>
+            
+
+
+              <input type='submit' value='submit' />
               </form>
              
 
