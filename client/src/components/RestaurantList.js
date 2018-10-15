@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import EditUser from './EditUser'
+// import EditUser from './EditUser'
 
 const StyledListBody = styled.div`
     background-color: #E2DDD9;
-    height: 100vh;
+    height: 120vh;
     `
 const StyledSubHeader = styled.div`
 

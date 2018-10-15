@@ -169,11 +169,13 @@ export default class ShowRestaurant extends Component {
               <StyledInput>Image URL:<input name="imageUrl" type="text" value={this.state.updatedRestaurant.imageUrl} onChange={this.handleChange}/></StyledInput> <br></br>
               
               </form>
-              
+             
 
               </StyledInputForm>
+              
                 
-                    </StyledListBody>
+              </StyledListBody>
+                      
           )
         }
       }
